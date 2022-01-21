@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="diseño.css">
+
+</head>
+
+<body>
+   <div id="titulo"><h1>EVIDENCIA 4</h1></div> 
+   
+
+
+        <label>ID:</label>
+        <input id="dki" type="search">
+        <button id="rkt" type="submit">Buscar</button><br>
+
+        <label>Nombre: </label>
+        <input type="text" id="trp"><br>
+        <label>Nombre Usuario: </label>
+        <input type="text" id="hphp"><br>
+        <label>E-mail: </label>
+        <input type="text" id="bmbp"><br>
+        <label>Domicilio: </label>
+        <input type="text" id="dnhll"><br>
+        <input type="text" id="rgt"><br>
+        <input type="text" id="bv"><br>
+
+</body>
+
+<script>
+
+
+
+
+    axios({
+        method: 'GET',
+        url: 'https://jsonplaceholder.typicode.com/users'
+    }).then(res => {
+        document.getElementById("rkt").addEventListener("click", function () {
+            mostrar(res.data);
+        });
+
+    })
+        .catch(err => console.log(err))
+
+
+
+    function mostrar(data) {
+
+        let X9 = document.getElementById('dki').value
+
+        for (X10 of data) {
+            console.log(data);
+            if (X9 == X10.id) {
+                document.getElementById('trp').value = X10.name;
+                document.getElementById('hphp').value = X10.username;
+                document.getElementById('bmbp').value = X10.email;
+                document.getElementById('dnhll').value = X10.address.street;
+                document.getElementById('rgt').value = X10.address.suite;
+                document.getElementById('bv').value = X10.address.city;
+            }
+
+        }
+    }
+
+
+
+
+
+</script>
+
+</html>
